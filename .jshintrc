@@ -1,0 +1,19 @@
+{
+  "asi": true,
+  "browser": true,
+  "browserify": true,
+  "esnext": true,
+  "forin": true,
+  "latedef": "nofunc",
+  "supernew": true,
+  "unused": true,
+
+  "globals": {
+    "Framer": true,
+    "Layer": true,
+    "Utils": true,
+    "BackgroundLayer": true,
+    "Canvas": true,
+    "Screen": true
+  }
+}

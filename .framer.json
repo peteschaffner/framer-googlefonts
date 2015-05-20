@@ -1,0 +1,89 @@
+{
+  "!name": "framer",
+  "print": {
+    "!doc": "Printing allows you to inspect variables on runtime. It works similarly to console.log, only when using print, the output is shown directly within your prototype.",
+    "!url": "http://framerjs.com/docs/#print",
+    "!type": "fun(text: string) -> string"
+  },
+  "Framer": {
+    "Defaults": {
+      "!doc": "The Framer.Defaults allows you to override the default properties for Layers and Animations when they are created.",
+      "!url": "http://framerjs.com/docs/#defaults.defaults",
+      "Animation": {
+        "curve": "string",
+        "time": "number"
+      },
+      "Layer": {
+        "backgroundColor": "string",
+        "height": "number",
+        "width": "number"
+      }
+    }
+  },
+  "Canvas": {
+    "!doc": "The Canvas object contains the size for the current entire document in pixels. It will change if you resize your document by resizing the window it is in.",
+    "!url": "http://framerjs.com/docs/#canvas.canvas",
+    "width": {
+      "!doc": "The width of the current entire document in pixels. This property is read-only.",
+      "!url": "http://framerjs.com/docs/#canvas.width",
+      "!type": "number"
+    },
+    "height": {
+      "!doc": "The height of the current entire document in pixels. This property is read-only.",
+      "!url": "http://framerjs.com/docs/#canvas.height",
+      "!type": "number"
+    },
+    "size": {
+      "!doc": "The width and height of the current entire document in pixels. This property is read-only.",
+      "!url": "http://framerjs.com/docs/#canvas.size",
+      "width": "Canvas.width",
+      "height": "Canvas.height"
+    }
+  },
+  "Screen": {
+    "!doc": "The Screen object contains the size for the current device screen. The size will change when you update to a different device. If the device is full screen, it will be equal to the Canvas size.",
+    "!url": "http://framerjs.com/docs/#screen.screen",
+    "width": {
+      "!doc": "The width of the current device screen in pixels. This property is read-only.",
+      "!url": "http://framerjs.com/docs/#screen.width",
+      "!type": "number"
+    },
+    "height": {
+      "!doc": "The height of the current device screen in pixels. This property is read-only.",
+      "!url": "http://framerjs.com/docs/#screen.height",
+      "!type": "number"
+    },
+    "size": {
+      "!doc": "The width and height of the current device screen in pixels. This property is read-only.",
+      "!url": "http://framerjs.com/docs/#screen.size",
+      "width": "Screen.width",
+      "height": "Screen.height"
+    }
+  },
+  "Layer": {
+    "!doc": "Layers are the basic containers for Framer. They have positioning, size, visual properties and a hierarchy. They can contain images, videos, text or even arbitrary html.",
+    "!url": "http://framerjs.com/docs/#layer.layer",
+    "!type": "fn(options: object)",
+    "prototype": {
+      "id": {
+        "!doc": "A unique identification number for this layer. No other layer will have this number. The layer id is read only and cannot be changed.",
+        "!url": "http://framerjs.com/docs/index.html#layer.id",
+        "!type": "number"
+      },
+      "name": {
+        "!doc": "The layer name. This is not set by default but you can set it yourself. Imported layers from Sketch and Photoshop will have the source layer group set.",
+        "!url": "http://framerjs.com/docs/index.html#layer.name",
+        "!type": "string"
+      },
+      "x": {
+        "!doc": "The x property of a layer defines its x position relative to the top left corner.",
+        "!url": "http://framerjs.com/docs/index.html#layer.x",
+        "!type": "number"
+      },
+      "y": "number",
+      "z": "number",
+      "width": "number",
+      "height": "number"
+    }
+  }
+}

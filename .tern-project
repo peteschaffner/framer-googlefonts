@@ -1,0 +1,11 @@
+{
+  "libs": [
+    "browser",
+    "ecma6",
+    "underscore",
+    ".framer"
+  ],
+  "plugins": {
+    "complete_strings": {}
+  }
+}

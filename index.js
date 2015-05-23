@@ -25,10 +25,11 @@ module.exports = function() {
     weights = Array.prototype.slice.call(arguments, 1).join()
     families.push(`${arguments[0]}:${weights}:latin`)
   } else {
-    for (let family of Array.isArray(arguments[0]) ? arguments[0] : arguments) {
-      weights = family.weights || []
-      families.push(`${family.font}:${weights}:latin`)
-    }
+    (Array.isArray(arguments[0]) ? arguments[0] : [arguments[0]])
+      .forEach(function(family) {
+        weights = family.weights || []
+        families.push(`${family.font}:${weights}:latin`)
+      })
   }
 
   window.WebFontConfig = {

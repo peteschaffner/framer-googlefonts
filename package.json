@@ -1,0 +1,27 @@
+{
+  "name": "framer-googlefonts",
+  "version": "0.4.0",
+  "description": "Google Fonts loader.",
+  "author": {
+    "name": "Pete Schaffner",
+    "email": "pjschaffner@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "prototyping",
+    "framerjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/peteschaffner/framer-googlefonts.git"
+  },
+  "main": "app.coffee",
+  "dependencies": {
+    "coffeeify": "^1.1.0"
+  },
+  "browserify": {
+    "transform": [
+      "coffeeify"
+    ]
+  }
+}

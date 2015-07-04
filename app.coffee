@@ -9,24 +9,25 @@
 # googleFonts "Roboto", 400, "500"
 # googleFonts font: "Roboto", weights: 500
 # googleFonts [
-#   font: "Roboto", weights: [500]
-#   font: "Roboto Slab", weights: "400, 500"
-#   font: "Roboto Condensed"
+# 	font: "Roboto", weights: [500]
+# 	font: "Roboto Slab", weights: "400, 500"
+# 	font: "Roboto Condensed"
 # ]
 #
 
-googleFonts = ->
+googleFonts = (args...) ->
+	firstArg = args[0]
 	families = []
 	weights
 	
-	if typeof arguments[0] is "string"
-		weights = Array::slice.call(arguments, 1).join()
-		families.push "#{arguments[0]}:#{weights}:latin"
+	if typeof firstArg is "string"
+		weights = args[1..].join()
+		families.push "#{firstArg}:#{weights}:latin"
 	else
-		(if Array.isArray arguments[0] then arguments[0] else [arguments[0]])
-	    	.forEach (family) ->
+		(if Array.isArray firstArg then firstArg else [firstArg])
+			.forEach (family) ->
 				weights = family.weights or []
-				families.push family.font + ":" + weights + ":latin"
+				families.push "#{family.font}:#{weights}:latin"
 
 	window.WebFontConfig = google: families: families
 	wf = document.createElement "script"
@@ -39,11 +40,3 @@ googleFonts = ->
 	return
 
 module?.exports = googleFonts
-
-# Test
-googleFonts "Roboto"
-
-new Layer(
-	html: "hello world", color: "black", backgroundColor: "transparent"
-	style: fontFamily: "Roboto"
-).center()

@@ -9,9 +9,9 @@
 # googleFonts "Roboto", 400, "500"
 # googleFonts font: "Roboto", weights: 500
 # googleFonts [
-# 	font: "Roboto", weights: [500]
-# 	font: "Roboto Slab", weights: "400, 500"
-# 	font: "Roboto Condensed"
+# 	{ font: "Roboto", weights: [500] }
+# 	{ font: "Roboto Slab", weights: "400, 500" }
+# 	{ font: "Roboto Condensed" }
 # ]
 #
 

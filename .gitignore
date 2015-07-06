@@ -34,3 +34,5 @@ framer/*.old.*
 framer/backup.coffee
 framer/backups/*
 framer/.*.hash
+
+node_modules

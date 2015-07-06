@@ -1,42 +1,37 @@
-#
-# Google Fonts loader
-#
-# @param {...string} varParams
-#
-# All the following params are valid:
-#
-# googleFonts "Roboto"
-# googleFonts "Roboto", 400, "500"
-# googleFonts font: "Roboto", weights: 500
-# googleFonts [
-# 	{ font: "Roboto", weights: [500] }
-# 	{ font: "Roboto Slab", weights: "400, 500" }
-# 	{ font: "Roboto Condensed" }
-# ]
-#
 
-googleFonts = (args...) ->
-	firstArg = args[0]
-	families = []
-	weights
-	
-	if typeof firstArg is "string"
-		weights = args[1..].join()
-		families.push "#{firstArg}:#{weights}:latin"
-	else
-		(if Array.isArray firstArg then firstArg else [firstArg])
-			.forEach (family) ->
-				weights = family.weights or []
-				families.push "#{family.font}:#{weights}:latin"
+class GoogleFonts extends Framer.BaseClass
+	constructor: (args...) ->
+		Utils.domLoadScriptSync "//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"
+			
+		@load.apply @, args if args.length
 
-	window.WebFontConfig = google: families: families
-	wf = document.createElement "script"
-	wf.src = (if "https:" is document.location.protocol then "https" else "http") +
-		"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"
-	wf.type = "text/javascript"
-	wf.async = "true"
-	s = document.getElementsByTagName("script")[0]
-	s.parentNode.insertBefore wf, s
-	return
+	load: (args...) ->
+		firstArg = args[0]
+		families = []
+		
+		# create WebFontConfig string
+		if typeof firstArg is "string"
+			weights = args[1..].join()
+			families.push "#{firstArg}:#{weights}:latin"
+		else
+			(if Array.isArray firstArg then firstArg else [firstArg])
+				.forEach (family) ->
+					weights = family.weights or []
+					families.push "#{family.font}:#{weights}:latin"
 
-module?.exports = googleFonts
+		window.WebFont.load 
+			google: families: families
+			classes: false
+			# Font loading events
+			# https://github.com/typekit/webfontloader#events
+			loading: => @emit "loading"
+			active: => @emit "active"
+			inactive: => @emit "inactive"
+			fontloading: (familyName, fvd) =>
+				@emit "fontloading", familyName, fvd
+			fontactive: (familyName, fvd) =>
+				@emit "fontactive", familyName, fvd
+			fontinactive: (familyName, fvd) =>
+				@emit "fontinactive", familyName, fvd
+
+module?.exports = GoogleFonts

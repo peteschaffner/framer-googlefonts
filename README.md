@@ -1,37 +1,43 @@
 # Google Fonts loader
 
-Use [Google Fonts](https://www.google.com/fonts) in your prototypes.
+Use [Google Fonts](https://www.google.com/fonts) in your [Framer.js][framer]
+prototypes.
 
 ## Usage
 ```shell
-$ framer myProject &
-$ cd myProject
-$ npm install --save peteschaffner/framer-googlefonts
+$ cd <myProject>.framer
+$ npm install --save framer-googlefonts
 ```
 
-index.js:
-```javascript
-var googleFonts = require('framer-googlefonts')
+modules/myModule.coffee:
+```coffeescript
+exports.googleFonts = require "framer-googlefonts"
+```
 
-googleFonts('Pacifico')
+app.coffee:
+```coffeescript
+{googleFonts} = require "myModule"
 
-Utils.labelLayer(new Layer().center(), 'Hello World', {
-  fontFamily: 'Pacifico',
-  fontSize: '16px'
-})
+googleFonts "Roboto"
+
+Utils.labelLayer new Layer().center(), "Hello, World!",
+  fontFamily: "Roboto"
+  fontSize: "16px"
 ```
 
 ## API
 
 This can take just about anything you throw at it:
 
-```javascript
-googleFonts('Roboto')
-googleFonts('Roboto', 400, '500')
-googleFonts({ font: 'Roboto', weights: 500 })
-googleFonts([
-  { font: 'Roboto', weights: [500] },
-  { font: 'Roboto Slab', weights: '400, 500' },
-  { font: 'Roboto Condensed' }
-])
+```coffeescript
+googleFonts "Roboto"
+googleFonts "Roboto", 400, "500"
+googleFonts font: "Roboto", weights: 500
+googleFonts [
+  { font: "Roboto", weights: [500] }
+  { font: "Roboto Slab", weights: "400, 500" }
+  { font: "Roboto Condensed" }
+]
 ```
+
+[framer]: http://framerjs.com/
